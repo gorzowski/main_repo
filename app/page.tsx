@@ -33,6 +33,7 @@ export default function Home() {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedCards, setFlippedCards] = useState<Card[]>([]);
   const [isChecking, setIsChecking] = useState(false);
+  const [moves, setMoves] = useState(0);
 
   const isGameOver = useMemo(() => {
     return cards.length > 0 && cards.every((card) => card.isMatched);
@@ -76,6 +77,10 @@ export default function Home() {
       return;
     }
 
+    if (flippedCards.length === 1) {
+      setMoves((prev) => prev + 1);
+    }
+
     setCards((prevCards) =>
       prevCards.map((card) =>
         card.id === clickedCard.id ? { ...card, isFlipped: true } : card
@@ -90,11 +95,13 @@ export default function Home() {
     setCards(generateCards(size));
     setFlippedCards([]);
     setIsChecking(false);
+    setMoves(0);
   };
 
   const resetGame = () => {
     setBoardSize(null);
     setCards([]);
+    setMoves(0);
   };
 
   if (!boardSize) {
@@ -111,6 +118,7 @@ export default function Home() {
   return (
     <main style={{ padding: 24, fontFamily: "system-ui", textAlign: "center" }}>
       <h1>Gra w Pamięć</h1>
+      <p>Liczba ruchów: {moves}</p>
       {isGameOver ? (
         <div>
           <h2>Gratulacje! Wygrałeś!</h2>
@@ -130,7 +138,7 @@ export default function Home() {
               opacity: card.isMatched ? 0.5 : 1,
             }}>
               <div style={{
-                transform: 'rotateY(180deg)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', fontSize: '24px', fontWeight: 'bold'
+                transform: 'rotateY(180deg)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', fontSize: '24px', fontWeight: 'bold', color: 'black'
               }}>
                 {card.isFlipped ? card.value : ''}
               </div>
