@@ -5,7 +5,7 @@ export default async function Home() {
 
   return (
     <main style={{ padding: 24, fontFamily: "system-ui" }}>
-      <h1>My MVPs amongus</h1>
+      <h1>My MVPs v2</h1>
       <p>Projects:</p>
 
       <ul>
