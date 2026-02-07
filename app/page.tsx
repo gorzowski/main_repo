@@ -123,12 +123,17 @@ export default function Home() {
               width: '60px', height: '60px',
               backgroundColor: card.isFlipped ? '#fff' : '#60a5fa',
               border: '2px solid #1e3a8a', borderRadius: '5px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '24px', fontWeight: 'bold', cursor: 'pointer',
-              transition: 'transform 0.5s', transform: card.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+              cursor: 'pointer',
+              transition: 'transform 0.6s',
+              transformStyle: 'preserve-3d',
+              transform: card.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
               opacity: card.isMatched ? 0.5 : 1,
             }}>
-              {card.isFlipped ? card.value : ''}
+              <div style={{
+                transform: 'rotateY(180deg)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', fontSize: '24px', fontWeight: 'bold'
+              }}>
+                {card.isFlipped ? card.value : ''}
+              </div>
             </div>
           ))}
         </div>
