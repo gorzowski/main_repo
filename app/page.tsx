@@ -121,7 +121,7 @@ export default function Home() {
           {cards.map((card) => (
             <div key={card.id} onClick={() => handleCardClick(card)} style={{
               width: '60px', height: '60px',
-              backgroundColor: card.isFlipped ? '#fff' : '#60a5fa',
+              backgroundColor: card.isFlipped ? '#fff' : '#0f0',
               border: '2px solid #1e3a8a', borderRadius: '5px',
               cursor: 'pointer',
               transition: 'transform 0.6s',
