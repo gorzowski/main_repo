@@ -6,6 +6,7 @@ export default async function Home() {
   return (
     <main style={{ padding: 24, fontFamily: "system-ui" }}>
       <h1>My MVPs v2</h1>
+      <h2 style={{color: "red"}}>typ o smiesznej nazwie zrobil commita tej twojej stronki </h2>
       <p>Projects:</p>
 
       <ul>
